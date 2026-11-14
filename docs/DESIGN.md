@@ -146,6 +146,12 @@ terrain from `seed`, so the map is never sent.
 - Late join mid-run, host leaving mid-run, and 8-player packet sizes are untested
   over a real network (packet size is unit-checked for 3 players only).
 
+### Releases
+
+CI (`.github/workflows/build.yml`) builds Windows, Linux and macOS on every push and,
+on `main`, publishes release `build-<run number>` with the three zips. Android and the
+dedicated server were dropped from CI (the export presets and `tools/` still support them).
+
 ### Known rough edges
 
 - Clients render host snapshots with simple smoothing: no prediction, so your own

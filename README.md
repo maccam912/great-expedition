@@ -47,6 +47,11 @@ for what has and has not been exercised.
 
 ## Build
 
+Every push to `main` that passes the tests publishes a GitHub release named
+`build-N` (N is the workflow run number) with Windows, Linux and macOS zips and
+SHA-256 checksums: see [Releases](https://github.com/maccam912/great-expedition/releases).
+Pushing a `v*` tag publishes a release under that tag instead.
+
 Exports and CI are inherited from the template: [docs/BUILDING.md](docs/BUILDING.md),
 [docs/NETWORKING.md](docs/NETWORKING.md) (transport), [docs/CUSTOMIZING.md](docs/CUSTOMIZING.md).
 
