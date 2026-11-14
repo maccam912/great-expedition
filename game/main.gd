@@ -271,7 +271,10 @@ func _load_audio() -> void:
 		var voice := AudioStreamPlayer.new()
 		add_child(voice)
 		voices.append(voice)
-	if ResourceLoader.exists("res://assets/music/stroll.ogg") and not "--quiet" in OS.get_cmdline_user_args():
+	# Headless runs (smoke tests, dedicated server) skip music: nobody hears it, and a
+	# looping playback still active at quit leaks and fails the export check.
+	var headless := DisplayServer.get_name() == "headless"
+	if ResourceLoader.exists("res://assets/music/stroll.ogg") and not headless and not "--quiet" in OS.get_cmdline_user_args():
 		var music := AudioStreamPlayer.new()
 		var stream: AudioStream = load("res://assets/music/stroll.ogg")
 		if stream is AudioStreamOggVorbis:
